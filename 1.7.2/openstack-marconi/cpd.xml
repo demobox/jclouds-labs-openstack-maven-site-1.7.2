@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd-cpd>
+<duplication lines="20" tokens="145">
+<file line="41" path="/scratch/jenkins/workspace/jclouds-labs-openstack-maven-site/openstack-marconi/src/main/java/org/jclouds/openstack/marconi/v1/domain/MessageStream.java"/>
+<file line="47" path="/scratch/jenkins/workspace/jclouds-labs-openstack-maven-site/openstack-marconi/src/main/java/org/jclouds/openstack/marconi/v1/domain/Queues.java"/>
+<codefragment>
+<![CDATA[
+      return StreamMessagesOptions.class.cast(nextMarker().get());
+   }
+
+   @Override
+   public Optional<Object> nextMarker() {
+      Optional<Link> nextMarkerLink = Iterables.tryFind(getLinks(), IS_NEXT_LINK);
+      return nextMarkerLink.transform(TO_LIST_OPTIONS);
+   }
+
+   private static final Predicate<Link> IS_NEXT_LINK = new Predicate<Link>() {
+      @Override
+      public boolean apply(Link link) {
+         return Link.Relation.NEXT == link.getRelation();
+      }
+   };
+
+   private static final Function<Link, Object> TO_LIST_OPTIONS = new Function<Link, Object>() {
+      @Override
+      public Object apply(Link link) {
+         Multimap<String, String> queryParams = queryParser().apply(link.getHref().getRawQuery());
+]]>
+</codefragment>
+</duplication>
+</pmd-cpd>

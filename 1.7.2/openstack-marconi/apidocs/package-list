@@ -1,0 +1,8 @@
+org.jclouds.openstack.marconi.v1
+org.jclouds.openstack.marconi.v1.binders
+org.jclouds.openstack.marconi.v1.config
+org.jclouds.openstack.marconi.v1.domain
+org.jclouds.openstack.marconi.v1.features
+org.jclouds.openstack.marconi.v1.functions
+org.jclouds.openstack.marconi.v1.handlers
+org.jclouds.openstack.marconi.v1.options
