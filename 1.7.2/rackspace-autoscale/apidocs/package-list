@@ -1,0 +1,9 @@
+org.jclouds.rackspace.autoscale.v1
+org.jclouds.rackspace.autoscale.v1.binders
+org.jclouds.rackspace.autoscale.v1.config
+org.jclouds.rackspace.autoscale.v1.domain
+org.jclouds.rackspace.autoscale.v1.features
+org.jclouds.rackspace.autoscale.v1.functions
+org.jclouds.rackspace.autoscale.v1.handlers
+org.jclouds.rackspace.autoscale.v1.internal
+org.jclouds.rackspace.autoscale.v1.utils

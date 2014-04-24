@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd-cpd>
+<duplication lines="33" tokens="402">
+<file line="58" path="/scratch/jenkins/workspace/jclouds-labs-openstack-maven-site/rackspace-autoscale/src/main/java/org/jclouds/rackspace/autoscale/v1/functions/ParseGroupLaunchConfigurationResponse.java"/>
+<file line="70" path="/scratch/jenkins/workspace/jclouds-labs-openstack-maven-site/rackspace-autoscale/src/main/java/org/jclouds/rackspace/autoscale/v1/functions/ParseGroupResponse.java"/>
+<codefragment>
+<![CDATA[
+      Map<String, Object> launchConfigurationMap = (Map<String, Object>) result.get("launchConfiguration");
+      Map<String, Object> args = (Map<String, Object>) launchConfigurationMap.get("args");
+      Map<String, Object> server = (Map<String, Object>) args.get("server");      
+
+      ImmutableList.Builder<Personality> personalities = ImmutableList.builder();
+      ImmutableList.Builder<String> networks = ImmutableList.builder();
+      
+      for(Map<String,String> jsonPersonality : (List<Map<String,String>>) server.get("personality")) {
+         personalities.add(Personality.builder().path(jsonPersonality.get("path")).contents(jsonPersonality.get("contents")).build());
+      }
+
+      for(Map<String,String> jsonNetwork : (List<Map<String,String>>) server.get("networks")) {
+         networks.add(jsonNetwork.get("uuid"));
+      }
+
+      ImmutableList.Builder<LoadBalancer> loadBalancers = ImmutableList.builder();
+      for(Map<String,Double> jsonLoadBalancer : (List<Map<String,Double>>) args.get("loadBalancers")) {
+         loadBalancers.add(
+               LoadBalancer.builder().id( ((Double)jsonLoadBalancer.get("loadBalancerId")).intValue() ).port( ((Double)jsonLoadBalancer.get("port")).intValue() ).build()
+               );
+      }
+
+      LaunchConfiguration launchConfiguration = LaunchConfiguration.builder()
+            .loadBalancers(loadBalancers.build())
+            .serverName((String) server.get("name"))
+            .serverImageRef((String) server.get("imageRef"))
+            .serverFlavorRef((String) server.get("flavorRef"))
+            .serverDiskConfig((String) server.get("OS-DCF:diskConfig"))
+            .serverMetadata((Map<String, String>) server.get("metadata"))
+            .personalities(personalities.build())
+            .networks(networks.build())
+            .type(LaunchConfigurationType.getByValue((String) launchConfigurationMap.get("type")).get())
+            .build();
+]]>
+</codefragment>
+</duplication>
+<duplication lines="30" tokens="275">
+<file line="111" path="/scratch/jenkins/workspace/jclouds-labs-openstack-maven-site/rackspace-autoscale/src/main/java/org/jclouds/rackspace/autoscale/v1/functions/ParseGroupResponse.java"/>
+<file line="64" path="/scratch/jenkins/workspace/jclouds-labs-openstack-maven-site/rackspace-autoscale/src/main/java/org/jclouds/rackspace/autoscale/v1/functions/ParseScalingPoliciesResponse.java"/>
+<codefragment>
+<![CDATA[
+      for(Map<String, Object> scalingPolicyMap : (List<Map<String, Object>>) group.get("scalingPolicies")) {
+         ScalingPolicyTargetType targetType = null;
+         for(String key : scalingPolicyMap.keySet()) {
+            if(ScalingPolicyTargetType.getByValue(key).isPresent()) {
+               targetType = ScalingPolicyTargetType.getByValue(key).get();
+               break;
+            }  
+         }
+
+         ImmutableList.Builder<Link> links = ImmutableList.builder();
+         for(Map<String, String> linkMap : (List<Map<String, String>>) scalingPolicyMap.get("links")) {
+            Link link = Link.builder().href(URI.create(linkMap.get("href"))).relation(Relation.fromValue(linkMap.get("rel"))).build();
+            links.add(link);
+         }
+
+         Double d = (Double)scalingPolicyMap.get(targetType.toString()); // GSON only knows double now
+
+         ScalingPolicy scalingPolicyResponse = 
+               new ScalingPolicy(
+                     (String)scalingPolicyMap.get("name"),
+                     ScalingPolicyType.getByValue((String)scalingPolicyMap.get("type")).get(),
+                     ((Double)scalingPolicyMap.get("cooldown")).intValue(),
+                     DoubleMath.isMathematicalInteger(d) ? Integer.toString(d.intValue()) : Double.toString(d), 
+                           targetType,
+                           (Map<String, String>) scalingPolicyMap.get("args"),
+                           ImmutableList.copyOf(links.build()),
+                           (String) scalingPolicyMap.get("id")
+                     );
+         scalingPoliciesList.add(scalingPolicyResponse);
+      }
+]]>
+</codefragment>
+</duplication>
+<duplication lines="27" tokens="266">
+<file line="112" path="/scratch/jenkins/workspace/jclouds-labs-openstack-maven-site/rackspace-autoscale/src/main/java/org/jclouds/rackspace/autoscale/v1/functions/ParseGroupResponse.java"/>
+<file line="65" path="/scratch/jenkins/workspace/jclouds-labs-openstack-maven-site/rackspace-autoscale/src/main/java/org/jclouds/rackspace/autoscale/v1/functions/ParseScalingPoliciesResponse.java"/>
+<file line="62" path="/scratch/jenkins/workspace/jclouds-labs-openstack-maven-site/rackspace-autoscale/src/main/java/org/jclouds/rackspace/autoscale/v1/functions/ParseScalingPolicyResponse.java"/>
+<codefragment>
+<![CDATA[
+         ScalingPolicyTargetType targetType = null;
+         for(String key : scalingPolicyMap.keySet()) {
+            if(ScalingPolicyTargetType.getByValue(key).isPresent()) {
+               targetType = ScalingPolicyTargetType.getByValue(key).get();
+               break;
+            }  
+         }
+
+         ImmutableList.Builder<Link> links = ImmutableList.builder();
+         for(Map<String, String> linkMap : (List<Map<String, String>>) scalingPolicyMap.get("links")) {
+            Link link = Link.builder().href(URI.create(linkMap.get("href"))).relation(Relation.fromValue(linkMap.get("rel"))).build();
+            links.add(link);
+         }
+
+         Double d = (Double)scalingPolicyMap.get(targetType.toString()); // GSON only knows double now
+
+         ScalingPolicy scalingPolicyResponse = 
+               new ScalingPolicy(
+                     (String)scalingPolicyMap.get("name"),
+                     ScalingPolicyType.getByValue((String)scalingPolicyMap.get("type")).get(),
+                     ((Double)scalingPolicyMap.get("cooldown")).intValue(),
+                     DoubleMath.isMathematicalInteger(d) ? Integer.toString(d.intValue()) : Double.toString(d), 
+                           targetType,
+                           (Map<String, String>) scalingPolicyMap.get("args"),
+                           ImmutableList.copyOf(links.build()),
+                           (String) scalingPolicyMap.get("id")
+                     );
+]]>
+</codefragment>
+</duplication>
+<duplication lines="12" tokens="114">
+<file line="38" path="/scratch/jenkins/workspace/jclouds-labs-openstack-maven-site/rackspace-autoscale/src/main/java/org/jclouds/rackspace/autoscale/v1/binders/BindWebhookToJson.java"/>
+<file line="37" path="/scratch/jenkins/workspace/jclouds-labs-openstack-maven-site/rackspace-autoscale/src/main/java/org/jclouds/rackspace/autoscale/v1/binders/BindWebhookUpdateToJson.java"/>
+<codefragment>
+<![CDATA[
+   private BindWebhookToJson(BindToJsonPayload jsonBinder) {
+      this.jsonBinder = jsonBinder;
+   }
+
+   // This to be refactored with the other BindWebhook bindings
+   @SuppressWarnings("unchecked")
+   @Override    
+   public <R extends HttpRequest> R bindToRequest(R request, Map<String, Object> postParams) {
+      ImmutableMap.Builder<String, Object> webhook = ImmutableMap.builder();
+      webhook.put("name", postParams.get("name"));
+      ImmutableMap<String, Object> metadata = postParams.get("metadata")!=null ? 
+            ImmutableMap.copyOf((Map<String, Object>) postParams.get("metadata")) : ImmutableMap.<String, Object>of(); 
+]]>
+</codefragment>
+</duplication>
+</pmd-cpd>
