@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.3" timestamp="2014-04-24T19:53:27.673">
+<file name="/scratch/jenkins/workspace/jclouds-labs-openstack-maven-site/rackspace-cloudfiles/src/main/java/org/jclouds/rackspace/cloudfiles/v1/functions/ParseCDNContainerFromHeaders.java">
+<violation beginline="17" endline="84" begincolumn="1" endcolumn="2" rule="TooManyStaticImports" ruleset="Import Statement Rules" package="org.jclouds.rackspace.cloudfiles.v1.functions" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#TooManyStaticImports" priority="3">
+Too many static imports may lead to messy code
+</violation>
+</file>
+<file name="/scratch/jenkins/workspace/jclouds-labs-openstack-maven-site/rackspace-cloudfiles/src/main/java/org/jclouds/rackspace/cloudfiles/v1/options/UpdateCDNContainerOptions.java">
+<violation beginline="17" endline="179" begincolumn="1" endcolumn="2" rule="TooManyStaticImports" ruleset="Import Statement Rules" package="org.jclouds.rackspace.cloudfiles.v1.options" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#TooManyStaticImports" priority="3">
+Too many static imports may lead to messy code
+</violation>
+</file>
+</pmd>

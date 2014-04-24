@@ -1,0 +1,9 @@
+org.jclouds.rackspace.cloudfiles.v1
+org.jclouds.rackspace.cloudfiles.v1.binders
+org.jclouds.rackspace.cloudfiles.v1.config
+org.jclouds.rackspace.cloudfiles.v1.domain
+org.jclouds.rackspace.cloudfiles.v1.features
+org.jclouds.rackspace.cloudfiles.v1.functions
+org.jclouds.rackspace.cloudfiles.v1.handlers
+org.jclouds.rackspace.cloudfiles.v1.options
+org.jclouds.rackspace.cloudfiles.v1.reference
