@@ -1,0 +1,13 @@
+org.jclouds.openstack.swift.v1
+org.jclouds.openstack.swift.v1.binders
+org.jclouds.openstack.swift.v1.blobstore
+org.jclouds.openstack.swift.v1.blobstore.config
+org.jclouds.openstack.swift.v1.blobstore.functions
+org.jclouds.openstack.swift.v1.blobstore.internal
+org.jclouds.openstack.swift.v1.config
+org.jclouds.openstack.swift.v1.domain
+org.jclouds.openstack.swift.v1.features
+org.jclouds.openstack.swift.v1.functions
+org.jclouds.openstack.swift.v1.handlers
+org.jclouds.openstack.swift.v1.options
+org.jclouds.openstack.swift.v1.reference

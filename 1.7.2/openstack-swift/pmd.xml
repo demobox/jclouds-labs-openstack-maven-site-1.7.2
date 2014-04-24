@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.3" timestamp="2014-04-24T19:36:26.026">
+<file name="/scratch/jenkins/workspace/jclouds-labs-openstack-maven-site/openstack-swift/src/main/java/org/jclouds/openstack/swift/v1/TemporaryUrlSigner.java">
+<violation beginline="17" endline="89" begincolumn="1" endcolumn="2" rule="TooManyStaticImports" ruleset="Import Statement Rules" package="org.jclouds.openstack.swift.v1" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#TooManyStaticImports" priority="3">
+Too many static imports may lead to messy code
+</violation>
+</file>
+<file name="/scratch/jenkins/workspace/jclouds-labs-openstack-maven-site/openstack-swift/src/main/java/org/jclouds/openstack/swift/v1/binders/BindMetadataToHeaders.java">
+<violation beginline="17" endline="141" begincolumn="1" endcolumn="2" rule="TooManyStaticImports" ruleset="Import Statement Rules" package="org.jclouds.openstack.swift.v1.binders" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#TooManyStaticImports" priority="3">
+Too many static imports may lead to messy code
+</violation>
+</file>
+<file name="/scratch/jenkins/workspace/jclouds-labs-openstack-maven-site/openstack-swift/src/main/java/org/jclouds/openstack/swift/v1/blobstore/RegionScopedSwiftBlobStore.java">
+<violation beginline="17" endline="300" begincolumn="1" endcolumn="2" rule="TooManyStaticImports" ruleset="Import Statement Rules" package="org.jclouds.openstack.swift.v1.blobstore" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#TooManyStaticImports" priority="3">
+Too many static imports may lead to messy code
+</violation>
+</file>
+<file name="/scratch/jenkins/workspace/jclouds-labs-openstack-maven-site/openstack-swift/src/main/java/org/jclouds/openstack/swift/v1/config/BaseSwiftHttpApiModule.java">
+<violation beginline="36" endline="38" begincolumn="14" endcolumn="4" rule="UselessOverridingMethod" ruleset="Basic Rules" package="org.jclouds.openstack.swift.v1.config" class="BaseSwiftHttpApiModule" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#UselessOverridingMethod" priority="3">
+Overriding method merely calls super
+</violation>
+</file>
+<file name="/scratch/jenkins/workspace/jclouds-labs-openstack-maven-site/openstack-swift/src/main/java/org/jclouds/openstack/swift/v1/config/SwiftHttpApiModule.java">
+<violation beginline="29" endline="31" begincolumn="14" endcolumn="4" rule="UselessOverridingMethod" ruleset="Basic Rules" package="org.jclouds.openstack.swift.v1.config" class="SwiftHttpApiModule" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#UselessOverridingMethod" priority="3">
+Overriding method merely calls super
+</violation>
+</file>
+</pmd>
