@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd-cpd>
+<duplication lines="24" tokens="160">
+<file line="58" path="/scratch/jenkins/workspace/jclouds-labs-openstack-maven-site/openstack-neutron/src/main/java/org/jclouds/openstack/neutron/v2_0/functions/ParsePortDetails.java"/>
+<file line="57" path="/scratch/jenkins/workspace/jclouds-labs-openstack-maven-site/openstack-neutron/src/main/java/org/jclouds/openstack/neutron/v2_0/functions/ParsePorts.java"/>
+<codefragment>
+<![CDATA[
+   public ParsePortDetails(Json json) {
+      super(json, TypeLiteral.get(Ports.class));
+   }
+
+   public static class ToPagedIterable extends Arg0ToPagedIterable.FromCaller<ReferenceWithName, ToPagedIterable> {
+
+      private final NeutronApi api;
+
+      @Inject
+      protected ToPagedIterable(NeutronApi api) {
+         this.api = checkNotNull(api, "api");
+      }
+
+      @Override
+      protected Function<Object, IterableWithMarker<ReferenceWithName>> markerToNextForArg0(Optional<Object> arg0) {
+         String zone = arg0.isPresent() ? arg0.get().toString() : null;
+         final PortApi portApi = api.getPortApiForZone(zone);
+         return new Function<Object, IterableWithMarker<ReferenceWithName>>() {
+
+            @SuppressWarnings("unchecked")
+            @Override
+            public IterableWithMarker<ReferenceWithName> apply(Object input) {
+               PaginationOptions paginationOptions = PaginationOptions.class.cast(input);
+               return IterableWithMarker.class.cast(portApi.listInDetail(paginationOptions));
+]]>
+</codefragment>
+</duplication>
+<duplication lines="12" tokens="107">
+<file line="136" path="/scratch/jenkins/workspace/jclouds-labs-openstack-maven-site/openstack-neutron/src/main/java/org/jclouds/openstack/neutron/v2_0/domain/BulkSubnet.java"/>
+<file line="132" path="/scratch/jenkins/workspace/jclouds-labs-openstack-maven-site/openstack-neutron/src/main/java/org/jclouds/openstack/neutron/v2_0/domain/Subnet.java"/>
+<codefragment>
+<![CDATA[
+      return Objects.equal(this.name, that.name)
+         && Objects.equal(this.networkId, that.networkId)
+         && Objects.equal(this.gatewayIp, that.gatewayIp)
+         && Objects.equal(this.ipVersion, that.ipVersion)
+         && Objects.equal(this.cidr, that.cidr)
+         && Objects.equal(this.allocationPools, that.allocationPools)
+         && Objects.equal(this.enableDhcp, that.enableDhcp)
+         && Objects.equal(this.dnsNameServers, that.dnsNameServers)
+         && Objects.equal(this.hostRoutes, that.hostRoutes);
+   }
+
+   protected Objects.ToStringHelper string() {
+]]>
+</codefragment>
+</duplication>
+</pmd-cpd>

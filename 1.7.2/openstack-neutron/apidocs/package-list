@@ -1,0 +1,8 @@
+org.jclouds.openstack.neutron.v2_0
+org.jclouds.openstack.neutron.v2_0.config
+org.jclouds.openstack.neutron.v2_0.domain
+org.jclouds.openstack.neutron.v2_0.extensions
+org.jclouds.openstack.neutron.v2_0.features
+org.jclouds.openstack.neutron.v2_0.functions
+org.jclouds.openstack.neutron.v2_0.handlers
+org.jclouds.openstack.neutron.v2_0.options
